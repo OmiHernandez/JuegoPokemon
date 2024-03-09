@@ -11,9 +11,9 @@ var pokemon = [{
     tipo: "fuego",
     sonido: "audio/Charmander.wav"
 }, {
-    img: "img/Pokemons/Eevee.png",
-    tipo: "normal",
-    sonido: "audio/Eevee.wav"
+    img: "img/Pokemons/Umbreon.png",
+    tipo: "siniestro",
+    sonido: "audio/Umbreon.wav"
 }, {
     img: "img/Pokemons/Gengar.png",
     tipo: "fantasma",
@@ -47,25 +47,25 @@ var habitat = [{
     img: "img/Pokemons/Habitat/Fuego.png",
     tipo: "fuego"
 }, {
-    img: "img/Pokemons/Habitat/Normal.png",
-    tipo: "normal"
+    img: "img/Pokemons/Habitat/Siniestro.png",
+    tipo: "siniestro"
 }, {
     img: "img/Pokemons/Habitat/Agua.png",
     tipo: "fantasma"
 }, {
-    img: "img/Pokemons/Jigglypuff.png",
+    img: "img/Pokemons/Habitat/Hada.png",
     tipo: "hada"
 }, {
-    img: "img/Pokemons/Mr. Mime.png",
+    img: "img/Pokemons/Habitat/Psiquico.png",
     tipo: "psiquico"
 }, {
-    img: "img/Pokemons/Pikachu.png",
+    img: "img/Pokemons/Habitat/Electrico.png",
     tipo: "electrico"
 }, {
-    img: "img/Pokemons/Snorlax.png",
+    img: "img/Pokemons/Habitat/Normal.png",
     tipo: "normal"
 }, {
-    img: "img/Pokemons/Squirtle.png",
+    img: "img/Pokemons/Habitat/Agua.png",
     tipo: "agua"
 }
 ];
