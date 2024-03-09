@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    background-image: url("../img/fondo-index.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#portada canvas {
+    border: 2px solid #2ccc67;
+    background-image: url("../img/canvas-fondo-1.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .button-p {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;}
+*/
+.button-p:hover {
+    background-color: #144416;
+    color: #4CAF50;
+    color: #20234d;
+
+} 
