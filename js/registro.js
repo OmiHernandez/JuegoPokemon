@@ -104,6 +104,6 @@ function guardar() {
     var nombre = document.getElementById('nombre').value;
     localStorage.setItem('nombre', nombre);
     // window.open("../juego.html");
-    window.location.href = 'juego-prueba.html';
+    window.location.href = 'juego.html';
 
 }
