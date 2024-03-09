@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <title>Pokemon Game</title>
     <link rel="stylesheet" href="css/styles-portada.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -11,6 +14,35 @@
         <section id="cajaBotones">
             <canvas id="lienzoP"></canvas>
         </section>
+        <button id="musica"><img id="imagenCambiar" src="img/boton-de-play.png" width="50" height="50" alt="Botón de Música"></button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade modal-dialog modal-dialog-centered modal-dialog-scrollable" id="exampleModal" tabindex="-1" z-index="5" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Cómo Jugar?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <br>
+                    <b>Objetivo:</b> Descubrir de que tipo es cada Pokémon mostrado en pantalla. También, identificar el sonido que hace cada Pokémon.
+                    <br><br>
+                    En pantalla se mostraran 3 Pokémones diferentes, debes que adivinar a que tipo pertenece cada uno, además de que puedes escuchar el sonido que hace 
+                    cada Pokémon. El objetivo es identificar los 6 diferentes Pokémones.
+                    <br>
+                    Suma puntos. Cada que logres acertar a que tipo pertenece un Pokémon se te sumarán puntos sin embargo, ten cuidado con equivocarte, esto te hará perder unos cuantos puntos. Oh no!!
+                    <br>
+                    Diviertete y buena suerte. POKÉMON TENGO QUE ATRAPARLOS!!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">¡A atrapar Pokémones!</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/script-canvas.js"></script>

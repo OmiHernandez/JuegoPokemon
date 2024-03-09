@@ -3,11 +3,42 @@ canvas.width = 900;
 canvas.height = 550;
 var ctx = canvas.getContext('2d');
 
-ctx.font = 'bold 48px Arial';
-ctx.fillStyle = '#20234d';
-ctx.textAlign = 'center';
-ctx.fillText('Pokemon OWO', canvas.width / 2, 100);
 
+//  ctx.font = 'bold 48px Arial';
+//  ctx.fillStyle = '#ffcd00';
+//  ctx.textAlign = 'center';
+//  ctx.fillText('PokeFound', canvas.width / 2, 200);
+
+const musica = document.getElementById('musica');
+const cambio = document.getElementById('imagenCambiar');
+
+const audio = new Audio('../recursos/anville-town-theme.mp3');
+let reproducir = false;
+
+var logoImg = new Image();
+logoImg.src = '../img/pokebola.png';
+logoImg.onload = function() {
+    ctx.drawImage(logoImg, canvas.width/2-70, 10, 140, 140);
+};
+var textoImg = new Image();
+textoImg.src = '../img/titulo.png';
+textoImg.onload = function() {
+    ctx.drawImage(textoImg, canvas.width/2-120, 90, 240, 100);
+};
+
+function tocarMusica() {
+    if (reproducir) {
+        audio.pause();
+        reproducir = false;
+        cambio.src = '../img/boton-de-play.png';
+    } else {
+        audio.play();
+        reproducir = true;
+        cambio.src = '../img/boton-de-pausa.png';
+    }
+}
+
+musica.addEventListener('click', tocarMusica);
 
 function drawButton(text, x, y, width, height) {
     ctx.fillStyle = '#4CAF50';
@@ -94,11 +125,11 @@ canvas.addEventListener('click', function(event) {
     const mouseY = event.clientY - rect.top;
 
     if (mouseX > 100 && mouseX < 300 && mouseY > 450 && mouseY < 500) {
-      alert('¡Has hecho clic en Jugar!');
+        window.location.href = 'registro.html';
     } else if (mouseX > 350 && mouseX < 550 && mouseY > 450 && mouseY < 500) {
-      alert('¡Has hecho clic en Instrucciones!');
+        $('#exampleModal').modal('show');
     } else if (mouseX > 600 && mouseX < 800 && mouseY > 450 && mouseY < 500) {
-      alert('¡Has hecho clic en Puntaje!');
+        alert('¡Has hecho clic en Puntaje!');
     }
 });
 
