@@ -105,6 +105,13 @@ function tocarMusica() {
     }
 }
 
+function repetirMusica() {
+    audio.currentTime = 0;
+    audio.play();
+}
+
+audio.addEventListener('ended', repetirMusica);
+
 musica.addEventListener('click', tocarMusica);
 
 function pintar() {
