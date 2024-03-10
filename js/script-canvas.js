@@ -12,7 +12,7 @@ var ctx = canvas.getContext('2d');
 const musica = document.getElementById('musica');
 const cambio = document.getElementById('imagenCambiar');
 
-const audio = new Audio('../recursos/anville-town-theme.mp3');
+const audio = new Audio('recursos/anville-town-theme.mp3');
 let reproducir = false;
 
 var logoImg = new Image();
@@ -30,11 +30,11 @@ function tocarMusica() {
     if (reproducir) {
         audio.pause();
         reproducir = false;
-        cambio.src = '../img/boton-de-play.png';
+        cambio.src = 'img/boton-de-play.png';
     } else {
         audio.play();
         reproducir = true;
-        cambio.src = '../img/boton-de-pausa.png';
+        cambio.src = 'img/boton-de-pausa.png';
     }
 }
 
@@ -66,52 +66,75 @@ function drawButton(text, x, y, width, height) {
         ctx.fillText(text, x + width / 2, y + height / 2 + 10);
 
         ctx.fillStyle = '#4CAF50';
-        ctx.fillRect(100, 450, 200, 50);
+        ctx.fillRect(20, 450, 200, 50);
 
         ctx.font = 'bold 24px Arial';
         ctx.fillStyle = 'white';
         ctx.textAlign = 'center';
-        ctx.fillText('Jugar', 100 + 200 / 2, 450 + 50 / 2 + 10);
+        ctx.fillText('Jugar', 20 + 200 / 2, 450 + 50 / 2 + 10);
 
 
         ctx.fillStyle = '#4CAF50';
-        ctx.fillRect(350, 450, 200, 50);
+        ctx.fillRect(240, 450, 200, 50);
 
         ctx.font = 'bold 24px Arial';
         ctx.fillStyle = 'white';
         ctx.textAlign = 'center';
-        ctx.fillText('Instrucciones', 350 + 200 / 2, 450 + 50 / 2 + 10);
+        ctx.fillText('Instrucciones', 240 + 200 / 2, 450 + 50 / 2 + 10);
 
+        ctx.fillStyle = '#4CAF50';
+        ctx.fillRect(680, 450, 200, 50);
+
+        ctx.font = 'bold 24px Arial';
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.fillText('Creditos', 680 + 200 / 2, 450 + 50 / 2 + 10);
+
+        ctx.fillStyle = '#4CAF50';
+        ctx.fillRect(460, 450, 200, 50);
+
+        ctx.font = 'bold 24px Arial';
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        ctx.fillText('Tu Puntaje', 460 + 200 / 2, 450 + 50 / 2 + 10);
         
 
-        if (mouseX > 100 && mouseX < 300 && mouseY > 450 && mouseY < 500) {
+        if (mouseX > 20 && mouseX < 220 && mouseY > 450 && mouseY < 500) {
             ctx.fillStyle = '#042206';
-            ctx.fillRect(100, 450, 200, 50);
+            ctx.fillRect(20, 450, 200, 50);
 
             ctx.font = 'bold 24px Arial';
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
-            ctx.fillText('Jugar', 100 + 200 / 2, 450 + 50 / 2 + 10);
+            ctx.fillText('Jugar', 20 + 200 / 2, 450 + 50 / 2 + 10);
 
-          } else if (mouseX > 350 && mouseX < 550 && mouseY > 450 && mouseY < 500) {
+          } else if (mouseX > 240 && mouseX < 440 && mouseY > 450 && mouseY < 500) {
             //Instrucciones
             ctx.fillStyle = '#042206';
-            ctx.fillRect(350, 450, 200, 50);
+            ctx.fillRect(240, 450, 200, 50);
 
             ctx.font = 'bold 24px Arial';
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
-            ctx.fillText('Instrucciones', 350 + 200 / 2, 450 + 50 / 2 + 10);
-            
-          } else if (mouseX > 600 && mouseX < 800 && mouseY > 450 && mouseY < 500) {
+            ctx.fillText('Instrucciones', 240 + 200 / 2, 450 + 50 / 2 + 10);
+
+          }else if (mouseX > 680 && mouseX < 880 && mouseY > 450 && mouseY < 500) {
             ctx.fillStyle = '#042206';
             ctx.fillRect(x, y, width, height);
 
             ctx.font = 'bold 24px Arial';
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
-            ctx.fillText(text, x + width / 2, y + height / 2 + 10);
-          }
+            ctx.fillText('Creditos', 680 + 200 / 2, 450 + 50 / 2 + 10);
+
+          } else if (mouseX > 460 && mouseX < 660 && mouseY > 450 && mouseY < 500) {
+            ctx.fillStyle = '#042206';
+            ctx.fillRect(460, 450, 200, 50);
+            ctx.font = 'bold 24px Arial';
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.fillText('Tu Puntaje', 460 + 200 / 2, 450 + 50 / 2 + 10);
+        }
       
       };
 
@@ -124,16 +147,19 @@ canvas.addEventListener('click', function(event) {
     const mouseX = event.clientX - rect.left;
     const mouseY = event.clientY - rect.top;
 
-    if (mouseX > 100 && mouseX < 300 && mouseY > 450 && mouseY < 500) {
+    if (mouseX > 20 && mouseX < 220 && mouseY > 450 && mouseY < 500) {
         window.location.href = 'registro.html';
-    } else if (mouseX > 350 && mouseX < 550 && mouseY > 450 && mouseY < 500) {
+    } else if (mouseX > 240 && mouseX < 440 && mouseY > 450 && mouseY < 500) {
         $('#exampleModal').modal('show');
-    } else if (mouseX > 600 && mouseX < 800 && mouseY > 450 && mouseY < 500) {
+    } else if (mouseX > 460 && mouseX < 660 && mouseY > 450 && mouseY < 500) {
         window.location.href = 'puntuaciones.html';
+    } else if (mouseX > 680 && mouseX < 880 && mouseY > 450 && mouseY < 500) {
+        $('#CreditosModal').modal('show');
     }
 });
 
   
-drawButton('Jugar', 100, 450, 200, 50);
-drawButton('Instrucciones', 350, 450, 200, 50);
-drawButton('Tu Puntaje', 600, 450, 200, 50);
+drawButton('Jugar', 20, 450, 200, 50);
+drawButton('Instrucciones', 240, 450, 200, 50);
+drawButton('Tu Puntaje', 460, 450, 200, 50);
+drawButton('Creditos', 680, 450, 200, 50);
