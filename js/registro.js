@@ -3,6 +3,12 @@ canvas.width = 900;
 canvas.height = 550;
 var ctx = canvas.getContext('2d');
 
+var indice=-1; 
+var jugadores=localStorage.getItem("jugadores");
+jugadores=JSON.parse(jugadores);
+
+if(jugadores==null) jugadores=[];
+
 
 ctx.font = 'bold 46px Arial';
 ctx.fillStyle = '#003261';
@@ -101,9 +107,82 @@ drawButton('Comenzar', 350, 450, 200, 50);
 //**********GUARDAR EN EL LOCALSTORAGE**************** 
 //****************************************************
 function guardar() {
-    var nombre = document.getElementById('nombre').value;
-    localStorage.setItem('nombre', nombre);
-    // window.open("../juego.html");
-    window.location.href = 'juego.html';
+    var nombreJ = document.getElementById('nombre').value;
 
+    function verificarNombre(nombreJ) {
+        if(jugadores!=null) {
+            console.log("El array jugadores tiene elementos");
+            for(var i in jugadores){
+                var jugador = JSON.parse(jugadores[i]);
+                if(jugador.nombre == nombreJ) {
+                    console.log("el nombre ya existe");
+                    return true; 
+                }
+            }
+            console.log("no coincidio el nombre"); 
+            return false;
+        } else {
+            console.log("el array jugadores esta vacio");
+        }
+        console.log("nasdsadasd");
+        return false;
+    }
+
+    function almacenarNombre(nombreJ) {
+        if (!verificarNombre(nombreJ)) {
+            var datos = JSON.stringify({
+                nombre: nombreJ,
+                puntos: 0,
+                mejorTiempo: 0
+            });
+            jugadores.push(datos); // Almacenar el objeto JSON en el arreglo jugadores
+            localStorage.setItem("jugadores", JSON.stringify(jugadores)); // Actualizar el localStorage con el arreglo completo
+            console.log("El nombre existe");
+            return true;
+        }
+        console.log("El nombre no existe");
+        return false;
+    }
+
+    function obtenerDatos(nombreJ) {
+        // return JSON.parse(localStorage.getItem(nombre));
+        let jugadoresGuardados = JSON.parse(localStorage.getItem("jugadores"));
+        
+        var retornar = null
+        retornar = jugadoresGuardados.find(function(jugador) {
+            jugador2= JSON.parse(jugador)
+            if(jugador2.nombre === nombreJ){
+                console.log(jugador2)
+                console.log("mangos con chile")
+                return jugador2;
+            } 
+        });
+
+        return retornar;
+    }
+
+    if (nombreJ) {
+        const almacenado = almacenarNombre(nombreJ);
+        if (almacenado) {
+            // alert(`Nombre almacenado correctamente.${nombre}!`);
+            window.location.href = 'juego.html';
+        } else {
+            // alert(`El nombre "${nombre}" ya existe.`);
+            const datos = JSON.parse(obtenerDatos(nombreJ));
+            Swal.fire({
+                imageUrl: '../img/pokebola.png',
+                imageWidth: 100,
+                imageHeight: 100,
+                title: `Bienvenido de nuevo ${datos.nombre}`,
+                html: `Tus mayor puntuación es: <strong>${datos.puntos}</strong><br>Tu mejor tiempo es: <strong>${datos.mejorTiempo}</strong>`,
+                confirmButtonColor: '#f8ca07',
+                confirmButtonText: '¡A romper el record!'
+            }).then(() => {
+                window.location.href = 'juego.html';
+            });
+        }
+        // const datos = obtenerDatos(nombre);
+        // alert(`Tus puntos son: ${datos.puntos} y tu mejor tiempo es: ${datos.mejorTiempo}`);
+        // window.location.href = 'juego.html';
+    }
 }
