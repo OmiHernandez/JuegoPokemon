@@ -514,9 +514,9 @@ function Esperar() {
             document.getElementById("wait").innerHTML = "";
             segundos = 5;
             //aqui
-            guardarPuntaje(segundos, puntaje);
+            guardarPuntaje(segundostrans, puntaje);
 
-            //window.location.href = 'felicitacion.html';
+            window.location.href = 'felicitacion.html';
         } else {
             segundos--;
             setTimeout("Esperar()", "1000");
@@ -524,18 +524,33 @@ function Esperar() {
     }
 }
 
-function guardarPuntaje(segundos, puntaje){
-var NombreJug = localStorage.getItem("nombreActual");
-var Jugador = JSON.parse(localStorage.getItem("jugadores"));
-for(var jugador in Jugador) {
-    Objeto = JSON.parse(Jugador[jugador]);
-    if(Objeto.nombre == NombreJug) {
-        Objeto.puntos = puntaje;
-        Objeto.mejorTiempo = segundos;
-    }
-  }
-localStorage.setItem("jugadores", JSON.stringify(Jugador));
+function guardarPuntaje(segundos, puntaje) {
+    console.log("ENTRAAAAAAA EN GUARDAAAAAAAAR");
+    var NombreJug = localStorage.getItem("nombreActual");
+    console.log("Nombre actual:" +NombreJug)
+    var JugadoresJSON = JSON.parse(localStorage.getItem("jugadores"));
+
+    var Jugadores = JugadoresJSON.map(function(jugadorJSON) {
+        console.log("convertir objetos");
+        return JSON.parse(jugadorJSON);
+    });
+
+    Jugadores.forEach(function(jugador) {
+        console.log("entra en el foreach");
+        if (jugador.nombre === NombreJug && jugador.mejorTiempo > segundos) {
+            console.log("MANGO CON CHILEEEEEEE");
+            jugador.puntos = puntaje;
+            jugador.mejorTiempo = segundos;
+        }
+    });
+
+    var JSONActualizado = Jugadores.map(function(jugador) {
+        return JSON.stringify(jugador);
+    });
+
+    localStorage.setItem("jugadores", JSON.stringify(JSONActualizado));
 }
+
 
 function sonidoError() {
     const audioError = new Audio('audio/error.mp3');
