@@ -1,8 +1,9 @@
-
+var segundostrans = 0;
 var bandera = 0;
 var conteo = 0;
 var segundos = 5;
 var audiopok;
+var puntaje = 0;
 var pokemon = [{
     nombre: "Bulbasaur",
     color: "darkgreen",
@@ -102,6 +103,12 @@ var Elegidos = [];
 var HabElegidos = [];
 
 function inicializar() {
+    segundostrans = 0;
+    bandera = 0;
+    conteo = 0;
+    segundos = 5;
+    audiopok;
+    puntaje = 0;
     var lista = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     lista = lista.sort(function () {
         return Math.random() - 0.5;
@@ -110,9 +117,9 @@ function inicializar() {
     var aux2 = [];
     for (i = 0; i < 6; i++) {
         Elegidos.push(pokemon[lista[i]]);
-        if(i < 3){
+        if (i < 3) {
             aux1.push(habitat[lista[i]]);
-        }else{
+        } else {
             aux2.push(habitat[lista[i]]);
         }
     }
@@ -122,12 +129,13 @@ function inicializar() {
     aux2 = aux2.sort(function () {
         return Math.random() - 0.5;
     });
-    for(var i=0; i<aux1.length; i++){
+    for (var i = 0; i < aux1.length; i++) {
         HabElegidos.push(aux1[i]);
     }
-    for(var i=0; i<aux2.length; i++){
+    for (var i = 0; i < aux2.length; i++) {
         HabElegidos.push(aux2[i]);
     }
+    Reloj();
     pintar();
 }
 
@@ -137,6 +145,7 @@ canvas.height = 250;
 var ctx = canvas.getContext('2d');
 
 const musica = document.getElementById('musica');
+const salir = document.getElementById('salir');
 const cambio = document.getElementById('imagenCambiar');
 
 const audio = new Audio('recursos/anville-town-theme.mp3');
@@ -162,6 +171,17 @@ function repetirMusica() {
 audio.addEventListener('ended', repetirMusica);
 
 musica.addEventListener('click', tocarMusica);
+salir.addEventListener("click", Salir);
+
+function Salir(){
+    segundostrans = 0;
+    bandera = 0;
+    conteo = 0;
+    segundos = 5;
+    audiopok;
+    puntaje = 0;
+    window.location.href = 'index.html';
+}
 
 function pintar() {
     if (bandera == 0) {
@@ -257,6 +277,18 @@ function pintar() {
     }
 }
 
+function Reloj() {
+    if (bandera < 3) {
+        segundostrans++;
+        horaImprimible = " Segundos transcurridos : " + segundostrans + "s";
+
+        document.getElementById("Tiempo").innerHTML = horaImprimible;
+        document.getElementById("Puntaje").innerHTML = "Puntaje: " + puntaje;
+
+        setTimeout("Reloj()", 1000)
+    }
+}
+
 function finalizado(e) {
     elemento = e.target;
 }
@@ -343,76 +375,97 @@ function soltado(e) {
             case (posx >= 0 && posx < 300):
                 if (Validar(0, ElemArr)) {
                     elemento.style.visibility = 'hidden';
-                    ctx.drawImage(elemento, posx, posy, 150, 150);
+                    ctx.drawImage(elemento, 150-75, 125-75, 150, 150);
                     conteo += 1;
-                    Colocacion(ElemArr, posx, posy);
+                    Colocacion(ElemArr, 150, posy);
+                    puntaje += 70;
                 } else {
                     sonidoError();
+                    puntaje -= 70;
                 }
                 break;
             case (posx >= 300 && posx < 600):
                 if (Validar(1, ElemArr)) {
                     elemento.style.visibility = 'hidden';
-                    ctx.drawImage(elemento, posx, posy, 150, 150);
+                    ctx.drawImage(elemento, 450-75, 125-75, 150, 150);
                     conteo += 1;
-                    Colocacion(ElemArr, posx, posy);
+                    Colocacion(ElemArr, 450, posy);
+                    puntaje += 70;
                 } else {
                     sonidoError();
+                    puntaje -= 70;
                 }
                 break;
             case (posx >= 600 && posx < 900):
                 if (Validar(2, ElemArr)) {
                     elemento.style.visibility = 'hidden';
-                    ctx.drawImage(elemento, posx, posy, 150, 150);
+                    ctx.drawImage(elemento, 750-75, 125-75, 150, 150);
                     conteo += 1;
-                    Colocacion(ElemArr, posx, posy);
+                    Colocacion(ElemArr, 750, posy);
+                    puntaje += 70;
                 } else {
                     sonidoError();
+                    puntaje -= 70;
                 }
                 break;
         }
+        if(puntaje < 0){
+            puntaje = 0;
+        }
+        document.getElementById("Puntaje").innerHTML = "Puntaje: " + puntaje;
     } else {
         switch (true) {
             case (posx >= 0 && posx < 300):
                 if (Validar(3, ElemArr)) {
                     elemento.style.visibility = 'hidden';
-                    ctx.drawImage(elemento, posx, posy, 150, 150);
+                    ctx.drawImage(elemento, 150-75, 125-75, 150, 150);
                     conteo += 1;
-                    Colocacion(ElemArr, posx, posy);
+                    Colocacion(ElemArr, 150, posy);
+                    puntaje += 70;
                 } else {
                     sonidoError();
+                    puntaje -= 70;
                 }
                 break;
             case (posx >= 300 && posx < 600):
                 if (Validar(4, ElemArr)) {
                     elemento.style.visibility = 'hidden';
-                    ctx.drawImage(elemento, posx, posy, 150, 150);
+                    ctx.drawImage(elemento, 450-75, 125-75, 150, 150);
                     conteo += 1;
-                    Colocacion(ElemArr, posx, posy);
+                    Colocacion(ElemArr, 450, posy);
+                    puntaje += 70;
                 } else {
                     sonidoError();
+                    puntaje -= 70;
                 }
                 break;
             case (posx >= 600 && posx < 900):
                 if (Validar(5, ElemArr)) {
                     elemento.style.visibility = 'hidden';
-                    ctx.drawImage(elemento, posx, posy, 150, 150);
+                    ctx.drawImage(elemento, 750-75, 125-75, 150, 150);
                     conteo += 1;
-                    Colocacion(ElemArr, posx, posy);
+                    Colocacion(ElemArr, 750, posy);
                 } else {
                     sonidoError();
+                    puntaje -= 70;
                 }
                 break;
         }
+        if(puntaje < 0){
+            puntaje = 0;
+        }
+        document.getElementById("Puntaje").innerHTML = "Puntaje: " + puntaje;
     }
 
 
     if (conteo == 3) {
+        conteo++;
         bandera = 1;
         Esperar();
-    } else if (conteo == 6) {
+    } else if (conteo == 7) {
+        conteo++;
         bandera = 2;
-        MoveItOn();
+        Esperar();
     }
 }
 
@@ -429,35 +482,79 @@ function Colocacion(ElemArr, posx, posy) {
     ctx.fillStyle = Elegidos[ElemArr].color; // Color de relleno
     ctx.textAlign = "center";
     // Dibujar el texto
-    var posye = posy+150;
-    if(posye > 200){
-        posye = posy;
+    var posye = posy + 150;
+    if (posye > 200) {
+        posye = posy + 25;
     }
-    ctx.fillText(Elegidos[ElemArr].nombre, posx + 75, posy + 150);
+    ctx.fillText(Elegidos[ElemArr].nombre, posx, 200);
     ctx.fillStyle = "black"; // Color de relleno
-    ctx.strokeText(Elegidos[ElemArr].nombre, posx + 75, posy + 150);
+    ctx.strokeText(Elegidos[ElemArr].nombre, posx, 200);
     audiopok = new Audio(`${Elegidos[ElemArr].sonido}`);
     audiopok.play();
 }
 
-function Esperar(){
-    document.getElementById("wait").innerHTML = "Siguiente ronda en " + segundos;
-    document.getElementById("CajaPok").style.display = "none";
-    if(segundos == 0){
-        document.getElementById("CajaPok").style.display = "flex";
-        document.getElementById("wait").innerHTML = "";
-        segundos = 5;
-        pintar();
-    }else{
-        segundos--;
-        setTimeout("Esperar()", "1000");
+function Esperar() {
+    if (bandera == 1) {
+        document.getElementById("wait").innerHTML = "Siguiente ronda en " + segundos;
+        document.getElementById("CajaPok").style.display = "none";
+        if (segundos == 0) {
+            document.getElementById("CajaPok").style.display = "flex";
+            document.getElementById("wait").innerHTML = "";
+            segundos = 5;
+            pintar();
+        } else {
+            segundos--;
+            setTimeout("Esperar()", "1000");
+        }
+    } else {
+        document.getElementById("wait").innerHTML = "Terminando juego en " + segundos + "<br> Puntaje obtenido: " + puntaje;
+        document.getElementById("CajaPok").style.display = "none";
+        if (segundos == 0) {
+            document.getElementById("CajaPok").style.display = "flex";
+            document.getElementById("wait").innerHTML = "";
+            segundos = 5;
+            //aqui
+            guardarPuntaje(segundostrans, puntaje);
+
+            window.location.href = 'felicitacion.html';
+        } else {
+            segundos--;
+            setTimeout("Esperar()", "1000");
+        }
     }
 }
+
+function guardarPuntaje(segundos, puntaje) {
+    console.log("ENTRAAAAAAA EN GUARDAAAAAAAAR");
+    var NombreJug = localStorage.getItem("nombreActual");
+    console.log("Nombre actual:" +NombreJug)
+    var JugadoresJSON = JSON.parse(localStorage.getItem("jugadores"));
+
+    var Jugadores = JugadoresJSON.map(function(jugadorJSON) {
+        console.log("convertir objetos");
+        return JSON.parse(jugadorJSON);
+    });
+
+    Jugadores.forEach(function(jugador) {
+        console.log("entra en el foreach");
+        if (jugador.nombre === NombreJug && jugador.mejorTiempo > segundos) {
+            console.log("MANGO CON CHILEEEEEEE");
+            jugador.puntos = puntaje;
+            jugador.mejorTiempo = segundos;
+        }
+    });
+
+    var JSONActualizado = Jugadores.map(function(jugador) {
+        return JSON.stringify(jugador);
+    });
+
+    localStorage.setItem("jugadores", JSON.stringify(JSONActualizado));
+}
+
 
 function sonidoError() {
     const audioError = new Audio('audio/error.mp3');
     audioError.play();
 }
-
 
 window.onload = inicializar;

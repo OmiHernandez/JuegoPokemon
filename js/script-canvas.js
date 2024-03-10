@@ -152,7 +152,7 @@ canvas.addEventListener('click', function(event) {
     } else if (mouseX > 240 && mouseX < 440 && mouseY > 450 && mouseY < 500) {
         $('#exampleModal').modal('show');
     } else if (mouseX > 460 && mouseX < 660 && mouseY > 450 && mouseY < 500) {
-        alert('¡Has hecho clic en Puntaje!');
+        window.location.href = 'puntuaciones.html';
     } else if (mouseX > 680 && mouseX < 880 && mouseY > 450 && mouseY < 500) {
         $('#CreditosModal').modal('show');
     }
