@@ -535,6 +535,7 @@ for(var jugador in Jugador) {
     }
   }
 localStorage.setItem("jugadores", JSON.stringify(Jugador));
+console.log(NombreJug);
 }
 
 function sonidoError() {
