@@ -36,3 +36,15 @@ form#alias {
     color: #0a62b4;
     text-align: center;
 }
+
+#regresar {
+    position: absolute;
+    top: 50px;
+    left: 10%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}

@@ -3,7 +3,7 @@ body {
     background-image: url('../img/felicidades-fondo.png');
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 10px 50px;
+    padding: 10px 100px;
     font-family: "Patrick Hand SC", cursive;
 }
 
@@ -94,4 +94,9 @@ p {
 
 .botonfeli:hover:after {
     left: 50%;
+}
+#volverJ {
+    text-decoration: none; 
+    color: inherit;
+    cursor: pointer;
 }
