@@ -537,10 +537,12 @@ function guardarPuntaje(segundos, puntaje) {
 
     Jugadores.forEach(function(jugador) {
         console.log("entra en el foreach");
-        if (jugador.nombre === NombreJug && jugador.mejorTiempo > segundos) {
+        console.log(NombreJug + " y " + jugador.nombre);
+        if (jugador.nombre == NombreJug && jugador.mejorTiempo > segundos) {
             console.log("MANGO CON CHILEEEEEEE");
             jugador.puntos = puntaje;
             jugador.mejorTiempo = segundos;
+            console.log(jugador.puntos +" y "+ jugador.mejorTiempo);
         }
     });
 
