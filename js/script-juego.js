@@ -1,43 +1,71 @@
 
 var bandera = 0;
 var conteo = 0;
-
+var segundos = 5;
+var audiopok;
 var pokemon = [{
+    nombre: "Bulbasaur",
+    color: "darkgreen",
     img: "img/Pokemons/Bulbasaur.png",
     tipo: "planta",
-    sonido: "audio/Bulbasaur.wav"
+    sonido: "audio/Bulbasaur.wav",
+    grito: "audio/Gritos/Grito_de_Bulbasaur.ogg"
 }, {
+    nombre: "Charmander",
+    color: "orange",
     img: "img/Pokemons/Charmander.png",
     tipo: "fuego",
-    sonido: "audio/Charmander.wav"
+    sonido: "audio/Charmander.wav",
+    grito: "audio/Gritos/Grito_de_Charmander.ogg"
 }, {
-    img: "img/Pokemons/Eevee.png",
-    tipo: "normal",
-    sonido: "audio/Eevee.wav"
+    nombre: "Umbreon",
+    color: "black",
+    img: "img/Pokemons/Umbreon.png",
+    tipo: "siniestro",
+    sonido: "audio/Umbreon.wav",
+    grito: "audio/Gritos/Grito_de_Umbreon.ogg"
 }, {
+    nombre: "Gengar",
+    color: "purple",
     img: "img/Pokemons/Gengar.png",
     tipo: "fantasma",
-    sonido: "audio/Gengar.wav"
+    sonido: "audio/Gengar.wav",
+    grito: "audio/Gritos/Grito_de_Gengar.ogg"
 }, {
+    nombre: "Jigglypuff",
+    color: "pink",
     img: "img/Pokemons/Jigglypuff.png",
     tipo: "hada",
-    sonido: "audio/Jigglypuff.wav"
+    sonido: "audio/Jigglypuff.wav",
+    grito: "audio/Gritos/Grito_de_Jigglypuff.ogg"
 }, {
+    nombre: "Mr. Mime",
+    color: "red",
     img: "img/Pokemons/Mr. Mime.png",
     tipo: "psiquico",
-    sonido: "audio/Mr. Mime.wav"
+    sonido: "audio/Mr. Mime.wav",
+    grito: "audio/Gritos/Grito_de_Mr._Mime.ogg"
 }, {
+    nombre: "Pikachu",
+    color: "yellow",
     img: "img/Pokemons/Pikachu.png",
     tipo: "electrico",
-    sonido: "audio/Pikachu.wav"
+    sonido: "audio/Pikachu.wav",
+    grito: "audio/Gritos/Grito_de_Pikachu.ogg"
 }, {
+    nombre: "Snorlax",
+    color: "darkblue",
     img: "img/Pokemons/Snorlax.png",
     tipo: "normal",
-    sonido: "audio/Snorlax.wav"
+    sonido: "audio/Snorlax.wav",
+    grito: "audio/Gritos/Grito_de_Snorlax.ogg"
 }, {
+    nombre: "Squirtle",
+    color: "blue",
     img: "img/Pokemons/Squirtle.png",
     tipo: "agua",
-    sonido: "audio/Squirtle.wav"
+    sonido: "audio/Squirtle.wav",
+    grito: "audio/Gritos/Grito_de_Squirtle.ogg"
 }
 ];
 var habitat = [{
@@ -47,25 +75,25 @@ var habitat = [{
     img: "img/Pokemons/Habitat/Fuego.png",
     tipo: "fuego"
 }, {
+    img: "img/Pokemons/Habitat/Siniestro.png",
+    tipo: "siniestro"
+}, {
+    img: "img/Pokemons/Habitat/Fantasma.png",
+    tipo: "fantasma"
+}, {
+    img: "img/Pokemons/Habitat/Hada.png",
+    tipo: "hada"
+}, {
+    img: "img/Pokemons/Habitat/Psiquico.png",
+    tipo: "psiquico"
+}, {
+    img: "img/Pokemons/Habitat/Electrico.png",
+    tipo: "electrico"
+}, {
     img: "img/Pokemons/Habitat/Normal.png",
     tipo: "normal"
 }, {
     img: "img/Pokemons/Habitat/Agua.png",
-    tipo: "fantasma"
-}, {
-    img: "img/Pokemons/Jigglypuff.png",
-    tipo: "hada"
-}, {
-    img: "img/Pokemons/Mr. Mime.png",
-    tipo: "psiquico"
-}, {
-    img: "img/Pokemons/Pikachu.png",
-    tipo: "electrico"
-}, {
-    img: "img/Pokemons/Snorlax.png",
-    tipo: "normal"
-}, {
-    img: "img/Pokemons/Squirtle.png",
     tipo: "agua"
 }
 ];
@@ -78,11 +106,28 @@ function inicializar() {
     lista = lista.sort(function () {
         return Math.random() - 0.5;
     });
+    var aux1 = [];
+    var aux2 = [];
     for (i = 0; i < 6; i++) {
         Elegidos.push(pokemon[lista[i]]);
-        HabElegidos.push(habitat[lista[i]]);
+        if(i < 3){
+            aux1.push(habitat[lista[i]]);
+        }else{
+            aux2.push(habitat[lista[i]]);
+        }
     }
-
+    aux1 = aux1.sort(function () {
+        return Math.random() - 0.5;
+    });
+    aux2 = aux2.sort(function () {
+        return Math.random() - 0.5;
+    });
+    for(var i=0; i<aux1.length; i++){
+        HabElegidos.push(aux1[i]);
+    }
+    for(var i=0; i<aux2.length; i++){
+        HabElegidos.push(aux2[i]);
+    }
     pintar();
 }
 
@@ -219,6 +264,34 @@ function finalizado(e) {
 function arrastrado(e) {
     elemento = e.target;
     e.dataTransfer.setData('Text', elemento.getAttribute('id'));
+    var ElemArr = 0;
+    if (bandera == 0) {
+        switch (elemento.getAttribute('id')) {
+            case "poke1":
+                ElemArr = 0;
+                break;
+            case "poke2":
+                ElemArr = 1;
+                break;
+            case "poke3":
+                ElemArr = 2;
+                break;
+        }
+    } else {
+        switch (elemento.getAttribute('id')) {
+            case "poke1":
+                ElemArr = 3;
+                break;
+            case "poke2":
+                ElemArr = 4;
+                break;
+            case "poke3":
+                ElemArr = 5;
+                break;
+        }
+    }
+    audiopok = new Audio(`${Elegidos[ElemArr].grito}`);
+    audiopok.play();
     e.dataTransfer.setDragImage(e.target, 75, 75);
 }
 
@@ -272,6 +345,9 @@ function soltado(e) {
                     elemento.style.visibility = 'hidden';
                     ctx.drawImage(elemento, posx, posy, 150, 150);
                     conteo += 1;
+                    Colocacion(ElemArr, posx, posy);
+                } else {
+                    sonidoError();
                 }
                 break;
             case (posx >= 300 && posx < 600):
@@ -279,6 +355,9 @@ function soltado(e) {
                     elemento.style.visibility = 'hidden';
                     ctx.drawImage(elemento, posx, posy, 150, 150);
                     conteo += 1;
+                    Colocacion(ElemArr, posx, posy);
+                } else {
+                    sonidoError();
                 }
                 break;
             case (posx >= 600 && posx < 900):
@@ -286,16 +365,22 @@ function soltado(e) {
                     elemento.style.visibility = 'hidden';
                     ctx.drawImage(elemento, posx, posy, 150, 150);
                     conteo += 1;
+                    Colocacion(ElemArr, posx, posy);
+                } else {
+                    sonidoError();
                 }
                 break;
         }
-    }else{
+    } else {
         switch (true) {
             case (posx >= 0 && posx < 300):
                 if (Validar(3, ElemArr)) {
                     elemento.style.visibility = 'hidden';
                     ctx.drawImage(elemento, posx, posy, 150, 150);
                     conteo += 1;
+                    Colocacion(ElemArr, posx, posy);
+                } else {
+                    sonidoError();
                 }
                 break;
             case (posx >= 300 && posx < 600):
@@ -303,6 +388,9 @@ function soltado(e) {
                     elemento.style.visibility = 'hidden';
                     ctx.drawImage(elemento, posx, posy, 150, 150);
                     conteo += 1;
+                    Colocacion(ElemArr, posx, posy);
+                } else {
+                    sonidoError();
                 }
                 break;
             case (posx >= 600 && posx < 900):
@@ -310,6 +398,9 @@ function soltado(e) {
                     elemento.style.visibility = 'hidden';
                     ctx.drawImage(elemento, posx, posy, 150, 150);
                     conteo += 1;
+                    Colocacion(ElemArr, posx, posy);
+                } else {
+                    sonidoError();
                 }
                 break;
         }
@@ -318,8 +409,8 @@ function soltado(e) {
 
     if (conteo == 3) {
         bandera = 1;
-        pintar();
-    } else if (conteo == 6){
+        Esperar();
+    } else if (conteo == 6) {
         bandera = 2;
         MoveItOn();
     }
@@ -331,5 +422,42 @@ function Validar(valor, ElemArr) {
     }
     return false;
 }
+
+function Colocacion(ElemArr, posx, posy) {
+    // Establecer la fuente y el color
+    ctx.font = '35px PokeFont';
+    ctx.fillStyle = Elegidos[ElemArr].color; // Color de relleno
+    ctx.textAlign = "center";
+    // Dibujar el texto
+    var posye = posy+150;
+    if(posye > 200){
+        posye = posy;
+    }
+    ctx.fillText(Elegidos[ElemArr].nombre, posx + 75, posy + 150);
+    ctx.fillStyle = "black"; // Color de relleno
+    ctx.strokeText(Elegidos[ElemArr].nombre, posx + 75, posy + 150);
+    audiopok = new Audio(`${Elegidos[ElemArr].sonido}`);
+    audiopok.play();
+}
+
+function Esperar(){
+    document.getElementById("wait").innerHTML = "Siguiente ronda en " + segundos;
+    document.getElementById("CajaPok").style.display = "none";
+    if(segundos == 0){
+        document.getElementById("CajaPok").style.display = "flex";
+        document.getElementById("wait").innerHTML = "";
+        segundos = 5;
+        pintar();
+    }else{
+        segundos--;
+        setTimeout("Esperar()", "1000");
+    }
+}
+
+function sonidoError() {
+    const audioError = new Audio('audio/error.mp3');
+    audioError.play();
+}
+
 
 window.onload = inicializar;
