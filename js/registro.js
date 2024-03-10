@@ -137,6 +137,7 @@ function guardar() {
             });
             jugadores.push(datos); // Almacenar el objeto JSON en el arreglo jugadores
             localStorage.setItem("jugadores", JSON.stringify(jugadores)); // Actualizar el localStorage con el arreglo completo
+            localStorage.setItem("nombreActual", nombreJ);
             console.log("El nombre existe");
             return true;
         }
