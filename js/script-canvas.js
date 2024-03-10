@@ -88,7 +88,7 @@ function drawButton(text, x, y, width, height) {
         ctx.font = 'bold 24px Arial';
         ctx.fillStyle = 'white';
         ctx.textAlign = 'center';
-        ctx.fillText('Creditos', 680 + 200 / 2, 450 + 50 / 2 + 10);
+        ctx.fillText('Créditos', 680 + 200 / 2, 450 + 50 / 2 + 10);
 
         ctx.fillStyle = '#4CAF50';
         ctx.fillRect(460, 450, 200, 50);
@@ -125,7 +125,7 @@ function drawButton(text, x, y, width, height) {
             ctx.font = 'bold 24px Arial';
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
-            ctx.fillText('Creditos', 680 + 200 / 2, 450 + 50 / 2 + 10);
+            ctx.fillText('Créditos', 680 + 200 / 2, 450 + 50 / 2 + 10);
 
           } else if (mouseX > 460 && mouseX < 660 && mouseY > 450 && mouseY < 500) {
             ctx.fillStyle = '#042206';
