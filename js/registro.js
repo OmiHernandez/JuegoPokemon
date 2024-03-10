@@ -3,6 +3,12 @@ canvas.width = 900;
 canvas.height = 550;
 var ctx = canvas.getContext('2d');
 
+var indice=-1; 
+var jugadores=localStorage.getItem("jugadores");
+jugadores=JSON.parse(jugadores);
+
+if(jugadores==null) jugadores=[];
+
 
 ctx.font = 'bold 46px Arial';
 ctx.fillStyle = '#003261';
@@ -101,10 +107,7 @@ drawButton('Comenzar', 350, 450, 200, 50);
 //**********GUARDAR EN EL LOCALSTORAGE**************** 
 //****************************************************
 function guardar() {
-    var nombre = document.getElementById('nombre').value;
-    localStorage.setItem('nombre', nombre);
-    // window.open("../juego.html");
-    window.location.href = 'juego.html';
+    var nombreJ = document.getElementById('nombre').value;
 
     function verificarNombre(nombreJ) {
         if(jugadores!=null) {
