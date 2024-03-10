@@ -6,6 +6,7 @@ let jugadores = [
     { nombre: 'Eddie', puntaje: 50, tiempo: 70 }
 ];
 
+
 localStorage.setItem('jugadores', JSON.stringify(jugadores));
 
 function updateTable() {
@@ -30,7 +31,7 @@ function updateTable() {
         }
     }
 
-   
+
     jugadores.forEach((jugador, i) => {
         let row = table.insertRow(-1);
         row.insertCell(0).innerHTML = i + 1;
@@ -39,6 +40,7 @@ function updateTable() {
         row.insertCell(3).innerHTML = jugador.tiempo;
     });
 }
+
 
 window.addEventListener('storage', updateTable);
 
