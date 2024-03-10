@@ -106,21 +106,28 @@ function inicializar() {
     lista = lista.sort(function () {
         return Math.random() - 0.5;
     });
+    var aux1 = [];
+    var aux2 = [];
     for (i = 0; i < 6; i++) {
         Elegidos.push(pokemon[lista[i]]);
-        HabElegidos.push(habitat[lista[i]]);
+        if(i < 3){
+            aux1.push(habitat[lista[i]]);
+        }else{
+            aux2.push(habitat[lista[i]]);
+        }
     }
-
-    for (let i = 2; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [HabElegidos[i], HabElegidos[j]] = [HabElegidos[j], HabElegidos[i]]; // Intercambia los elementos
+    aux1 = aux1.sort(function () {
+        return Math.random() - 0.5;
+    });
+    aux2 = aux2.sort(function () {
+        return Math.random() - 0.5;
+    });
+    for(var i=0; i<aux1.length; i++){
+        HabElegidos.push(aux1[i]);
     }
-
-    for (let i = 5; i > 3; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [HabElegidos[i], HabElegidos[j]] = [HabElegidos[j], HabElegidos[i]]; // Intercambia los elementos
+    for(var i=0; i<aux2.length; i++){
+        HabElegidos.push(aux2[i]);
     }
-
     pintar();
 }
 
