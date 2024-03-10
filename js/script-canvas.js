@@ -16,12 +16,12 @@ const audio = new Audio('recursos/anville-town-theme.mp3');
 let reproducir = false;
 
 var logoImg = new Image();
-logoImg.src = '../img/pokebola.png';
+logoImg.src = 'img/pokebola.png';
 logoImg.onload = function() {
     ctx.drawImage(logoImg, canvas.width/2-70, 10, 140, 140);
 };
 var textoImg = new Image();
-textoImg.src = '../img/titulo.png';
+textoImg.src = 'img/titulo.png';
 textoImg.onload = function() {
     ctx.drawImage(textoImg, canvas.width/2-120, 90, 240, 100);
 };

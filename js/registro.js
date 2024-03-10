@@ -18,16 +18,16 @@ ctx.fillText('Nombre entrenador Pokémon:', canvas.width / 2, 250);
 const musica = document.getElementById('musica');
 const cambio = document.getElementById('imagenCambiar');
 
-const audio = new Audio('../recursos/anville-town-theme.mp3');
+const audio = new Audio('recursos/anville-town-theme.mp3');
 let reproducir = false;
 
 var logoImg = new Image();
-logoImg.src = '../img/pokebola.png';
+logoImg.src = 'img/pokebola.png';
 logoImg.onload = function() {
     ctx.drawImage(logoImg, canvas.width/2-70, 10, 140, 140);
 };
 var textoImg = new Image();
-textoImg.src = '../img/titulo.png';
+textoImg.src = 'img/titulo.png';
 textoImg.onload = function() {
     ctx.drawImage(textoImg, canvas.width/2-120, 90, 240, 100);
 };
@@ -36,11 +36,11 @@ function tocarMusica() {
     if (reproducir) {
         audio.pause();
         reproducir = false;
-        cambio.src = '../img/boton-de-play.png';
+        cambio.src = 'img/boton-de-play.png';
     } else {
         audio.play();
         reproducir = true;
-        cambio.src = '../img/boton-de-pausa.png';
+        cambio.src = 'img/boton-de-pausa.png';
     }
 }
 
@@ -173,7 +173,7 @@ function guardar() {
             // alert(`El nombre "${nombre}" ya existe.`);
             const datos = JSON.parse(obtenerDatos(nombreJ));
             Swal.fire({
-                imageUrl: '../img/pokebola.png',
+                imageUrl: 'img/pokebola.png',
                 imageWidth: 100,
                 imageHeight: 100,
                 title: `Bienvenido de nuevo ${datos.nombre}`,
