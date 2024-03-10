@@ -1,8 +1,9 @@
 body {
 
     background-image: url('../img/felicidades-fondo.png');
+    background-repeat: no-repeat;
     background-size: cover;
-    padding: 50px;
+    padding: 10px 50px;
     font-family: "Patrick Hand SC", cursive;
 }
 
@@ -11,15 +12,15 @@ body {
     float: left;
     background-color: rgba(255, 255, 255, 0.918);
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .contenedor-1 {
     display: flex;
     width: 80%;
-
+    margin-top: 0px;
 }
 
 .pika-baile {
