@@ -1,44 +1,45 @@
-function obtenerDatos(nombre) {
-    var datos = localStorage.getItem(nombre);
-    if (datos) {
-        return JSON.parse(datos);
-    } else {
-        console.log("No se encontraron datos para el jugador " + nombre);
-        return null;
-    }
-}
+
+let jugadores = [
+    { nombre: 'naomi', puntaje: 10, tiempo: 20 },
+    { nombre: 'eduardo', puntaje: 60, tiempo: 80 },
+    { nombre: 'Jose', puntaje: 90, tiempo: 40 },
+    { nombre: 'Eddie', puntaje: 50, tiempo: 70 }
+];
+
+localStorage.setItem('jugadores', JSON.stringify(jugadores));
 
 function updateTable() {
-    var table = document.getElementById('scoreTable');
+    
+    let table = document.getElementById('scoreTable');
+
+    
     while (table.rows.length > 1) {
         table.deleteRow(1);
     }
 
-    var scores = JSON.parse(localStorage.getItem('scores') || '[]');
-    scores.sort(function (a, b) { return a.time - b.time; });
-    scores = scores.slice(0, 10);
+   
+    jugadores = JSON.parse(localStorage.getItem('jugadores') || '[]');
 
-    for (var i = 0; i < scores.length; i++) {
-        var row = table.insertRow(-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        cell1.innerHTML = i + 1;
-        cell2.innerHTML = scores[i].name;
-        cell3.innerHTML = scores[i].time;
-        cell4.innerHTML = scores[i].score;
-
-        // Obtener los datos del jugador
-        var datos = obtenerDatos(scores[i].name);
-        if (datos) {
-            cell5.innerHTML = datos.puntos + ", " + datos.mejorTiempo;
-        } else {
-            cell5.innerHTML = "No se encontraron datos";
+    for (let i = 0; i < jugadores.length; i++) {
+        for (let j = i + 1; j < jugadores.length; j++) {
+            if (jugadores[i].tiempo > jugadores[j].tiempo) {
+                let temp = jugadores[i];
+                jugadores[i] = jugadores[j];
+                jugadores[j] = temp;
+            }
         }
     }
+
+   
+    jugadores.forEach((jugador, i) => {
+        let row = table.insertRow(-1);
+        row.insertCell(0).innerHTML = i + 1;
+        row.insertCell(1).innerHTML = jugador.nombre;
+        row.insertCell(2).innerHTML = jugador.puntaje;
+        row.insertCell(3).innerHTML = jugador.tiempo;
+    });
 }
 
 window.addEventListener('storage', updateTable);
+
 updateTable();

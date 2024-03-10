@@ -25,7 +25,7 @@ textoImg.src = '../img/titulo.png';
 textoImg.onload = function() {
     ctx.drawImage(textoImg, canvas.width/2-120, 90, 240, 100);
 };
-
+ 
 function tocarMusica() {
     if (reproducir) {
         audio.pause();
@@ -37,13 +37,6 @@ function tocarMusica() {
         cambio.src = '../img/boton-de-pausa.png';
     }
 }
-
-function repetirMusica() {
-    audio.currentTime = 0;
-    audio.play();
-}
-
-audio.addEventListener('ended', repetirMusica);
 
 musica.addEventListener('click', tocarMusica);
 

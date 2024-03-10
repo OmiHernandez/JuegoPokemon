@@ -44,13 +44,6 @@ function tocarMusica() {
     }
 }
 
-function repetirMusica() {
-    audio.currentTime = 0;
-    audio.play();
-}
-
-audio.addEventListener('ended', repetirMusica);
-
 musica.addEventListener('click', tocarMusica);
 
 function drawButton(text, x, y, width, height) {
@@ -78,6 +71,7 @@ function drawButton(text, x, y, width, height) {
         ctx.fillText(text, x + width / 2, y + height / 2 + 10);
 
         if (mouseX > 350 && mouseX < 550 && mouseY > 450 && mouseY < 500) {
+            //Instrucciones
             ctx.fillStyle = '#f89807';
             ctx.fillRect(350, 450, 200, 50);
 
@@ -112,14 +106,6 @@ drawButton('Comenzar', 350, 450, 200, 50);
 //****************************************************
 //**********GUARDAR EN EL LOCALSTORAGE**************** 
 //****************************************************
-// function guardar() {
-//     var nombre = document.getElementById('nombre').value;
-//     localStorage.setItem('nombre', nombre);
-//     // window.open("../juego.html");
-//     window.location.href = 'juego.html';
-
-// }
-
 function guardar() {
     var nombreJ = document.getElementById('nombre').value;
 

@@ -1,25 +1,50 @@
 body {
-    background-color: #3b4cca;
-    color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    color: #663004;
+    font-family: "Patrick Hand SC", cursive;
+}
+
+.mega-1 {
+    background-color: rgba(127, 141, 65, 0.856);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#video-background {
+    position: fixed;
+    right: 0; 
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto; 
+    z-index: -100;
+}
+.mini-1{
+    font-size: xx-large;
 }
 
 table {
-    
-    
-    width: 70%;
     border-collapse: collapse;
-    margin-top: 20px;
+    width: 600px;
 }
-th, td {
-    border: 2px solid #ffffff;
+
+th,
+td {
+    border: 2px solid #094d12;
     padding: 8px;
     text-align: center;
 }
+
 th {
-    background-color: #ffcb05;
-    color: #3b4cca;
+    background-color: #d8b517;
+    color: #fbfeff;
 }
