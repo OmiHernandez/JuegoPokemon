@@ -1,36 +1,17 @@
-function updateTable() {
-    
-    let table = document.getElementById('scoreTable');
+var jugadores = JSON.parse(localStorage.getItem('jugadores'));
+var tabla = document.getElementById('scoreTable');
 
-    
-    while (table.rows.length > 1) {
-        table.deleteRow(1);
-    }
+for (var i = 0; i < jugadores.length; i++) {
+    var jugador = JSON.parse(jugadores[i]);
+    var fila = tabla.insertRow(-1);
 
-   
-    jugadores = JSON.parse(localStorage.getItem('jugadores') || '[]');
+    var celdaPosicion = fila.insertCell(0);
+    var celdaNombre = fila.insertCell(1);
+    var celdaPuntos = fila.insertCell(2);
+    var celdaTiempo = fila.insertCell(3);
 
-    for (let i = 0; i < jugadores.length; i++) {
-        for (let j = i + 1; j < jugadores.length; j++) {
-            if (jugadores[i].tiempo > jugadores[j].tiempo) {
-                let temp = jugadores[i];
-                jugadores[i] = jugadores[j];
-                jugadores[j] = temp;
-            }
-        }
-    }
-
-
-    jugadores.forEach((jugador, i) => {
-        let row = table.insertRow(-1);
-        row.insertCell(0).innerHTML = i + 1;
-        row.insertCell(1).innerHTML = jugador.nombre;
-        row.insertCell(2).innerHTML = jugador.puntaje;
-        row.insertCell(3).innerHTML = jugador.tiempo;
-    });
+    celdaPosicion.innerHTML = i + 1;
+    celdaNombre.innerHTML = jugador.nombre;
+    celdaPuntos.innerHTML = jugador.puntos;
+    celdaTiempo.innerHTML = jugador.mejorTiempo;
 }
-
-
-window.addEventListener('storage', updateTable);
-
-updateTable();
