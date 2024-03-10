@@ -1,14 +1,3 @@
-
-let jugadores = [
-    { nombre: 'naomi', puntaje: 10, tiempo: 20 },
-    { nombre: 'eduardo', puntaje: 60, tiempo: 80 },
-    { nombre: 'Jose', puntaje: 90, tiempo: 40 },
-    { nombre: 'Eddie', puntaje: 50, tiempo: 70 }
-];
-
-
-localStorage.setItem('jugadores', JSON.stringify(jugadores));
-
 function updateTable() {
     
     let table = document.getElementById('scoreTable');
