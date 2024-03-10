@@ -515,7 +515,8 @@ function Esperar() {
             segundos = 5;
             //aqui
             guardarPuntaje(segundos, puntaje);
-            window.location.href = 'felicitacion.html';
+
+            //window.location.href = 'felicitacion.html';
         } else {
             segundos--;
             setTimeout("Esperar()", "1000");
@@ -523,7 +524,7 @@ function Esperar() {
     }
 }
 
-function guardarPuntaje(puntaje, segundos){
+function guardarPuntaje(segundos, puntaje){
 var NombreJug = localStorage.getItem("nombreActual");
 var Jugador = JSON.parse(localStorage.getItem("jugadores"));
 for(var jugador in Jugador) {
