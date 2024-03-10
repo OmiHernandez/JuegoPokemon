@@ -133,7 +133,7 @@ function guardar() {
             var datos = JSON.stringify({
                 nombre: nombreJ,
                 puntos: 0,
-                mejorTiempo: 0
+                mejorTiempo: 999
             });
             jugadores.push(datos); // Almacenar el objeto JSON en el arreglo jugadores
             console.log("nombre Actual="+nombreJ);
