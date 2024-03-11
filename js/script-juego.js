@@ -465,6 +465,7 @@ function soltado(e) {
     } else if (conteo == 7) {
         conteo++;
         bandera = 2;
+        puntaje += 70;
         Esperar();
     }
 }
