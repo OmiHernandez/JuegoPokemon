@@ -1,8 +1,13 @@
 var jugadores = JSON.parse(localStorage.getItem('jugadores'));
+
+// Convertir las cadenas de texto a objetos y ordenar por mejorTiempo
+jugadores = jugadores.map(jugador => JSON.parse(jugador));
+jugadores.sort((a, b) => a.mejorTiempo - b.mejorTiempo);
+
 var tabla = document.getElementById('scoreTable');
 
 for (var i = 0; i < jugadores.length; i++) {
-    var jugador = JSON.parse(jugadores[i]);
+    var jugador = jugadores[i];
     var fila = tabla.insertRow(-1);
 
     var celdaPosicion = fila.insertCell(0);
